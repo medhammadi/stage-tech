@@ -7,10 +7,10 @@ LABEL maintainer="Esteban López <stban_rocker@hotmail.com>"
 # Create the container's working directory.
 WORKDIR /app
 
-# Copy project dependencies for Angular. 
+# Copy project dependencies for Angular.
 COPY package.json package-lock.json ./
 
-# Execute dependencies within the container. 
+# Execute dependencies within the container.
 RUN npm install
 
 # Copy all frontend files.
@@ -19,7 +19,7 @@ COPY . .
 # Command to build the application within the container.
 RUN npm run build
 
-# Second stage where we serve the app using the Angular development server.
+# Second stage where we serve the app using a lightweight static server.
 FROM node:18.13
 
 # Set the working directory for the container.
@@ -28,7 +28,7 @@ WORKDIR /app
 # Copy the built application from the previous stage.
 COPY --from=build-stage /app/dist/frontend /app
 
-# Install serve to serve the static files
+# Install serve to serve the static files.
 RUN npm install -g serve
 
 # Expose port 4200
@@ -36,4 +36,3 @@ EXPOSE 4200
 
 # Command to start the application within the container.
 CMD ["serve", "-s", "."]  # Serve the built files
-
