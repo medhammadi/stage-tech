@@ -5,7 +5,7 @@ services:
       context: ./backend
       dockerfile: dockerfile.backend
     ports:
-      - '2001:3600'
+      - '2000:3600'
     env_file:
       - ./backend/backend.env
     volumes:
@@ -17,7 +17,7 @@ services:
       context: ./frontend
       dockerfile: dockerfile.frontend
     ports:
-      - '1501:4200'  # Map to port 4200 used by Angular
+      - '1500:4200'  # Map to port 4200 used by Angular
     container_name: angular-front
     depends_on:
       - backend
