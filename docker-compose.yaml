@@ -5,7 +5,7 @@ services:
       context: ./backend
       dockerfile: dockerfile.backend
     ports:
-      - '2000:3600'  # Host port 2000 maps to container port 3600
+      - '2000:3601'  # Host port 2000 maps to container port 3600
     container_name: node-backend  # Set a unique container name
     env_file:
       - ./backend/backend.env
@@ -18,7 +18,7 @@ services:
       context: ./frontend
       dockerfile: dockerfile.frontend
     ports:
-      - '1500:4200'  # Host port 1500 maps to container port 4200
+      - '1500:4201'  # Host port 1500 maps to container port 4200
     container_name: angular-frontend  # Set a unique container name
     depends_on:
       - backend  # Ensure the backend starts before the frontend
