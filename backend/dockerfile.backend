@@ -17,7 +17,7 @@ RUN npm install --production  # Use --production to skip devDependencies
 COPY . .
 
 # The application listens on port 3600, so we expose it.
-EXPOSE 3600
+EXPOSE 3601
 
 # Command to start the backend within the container.
 CMD ["npm", "start"]
